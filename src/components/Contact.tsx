@@ -10,13 +10,31 @@ export default function Contact() {
     e.preventDefault()
     setLaunching(true)
 
-    setTimeout(() => {
-      setSubmitted(true)
-      setLaunching(false)
-      setFormData({ name: '', email: '', message: '' })
+    try {
+      // Using Formspree - replace YOUR_FORM_ID with your actual Formspree form ID
+      // Get free form at: https://formspree.io/
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-      setTimeout(() => setSubmitted(false), 4000)
-    }, 2000)
+      if (response.ok) {
+        setSubmitted(true)
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setSubmitted(false), 4000)
+      } else {
+        alert('Failed to send message. Please try emailing directly.')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      // Fallback: open email client
+      window.location.href = `mailto:upamanyukalburgi@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${formData.message}`
+    } finally {
+      setLaunching(false)
+    }
   }
 
   return (
@@ -125,7 +143,7 @@ export default function Contact() {
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/upamanyu-kalburgi"
+                  href="https://www.linkedin.com/in/upamanyukalburgi/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group"
@@ -136,7 +154,7 @@ export default function Contact() {
                   <div>
                     <p className="text-sm text-gray-400">LinkedIn</p>
                     <p className="text-white group-hover:text-accent-cyan transition-colors">
-                      /upamanyu-kalburgi
+                      /upamanyukalburgi
                     </p>
                   </div>
                 </a>
