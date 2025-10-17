@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background-color: #0a0e27;
+  font-family: 'Space Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(0, 240, 255, 0.08), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.08), transparent 40%),
+    #0a0e27;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  position: relative;
+  isolation: isolate;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(0, 240, 255, 0.22);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 14, 39, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 240, 255, 0.6), rgba(168, 85, 247, 0.6));
+  border-radius: 999px;
+}
+
+.glass-panel {
+  background: rgba(13, 18, 45, 0.72);
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 45px rgba(4, 11, 36, 0.45);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.blueprint-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 240, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.07) 1px, transparent 1px);
+  background-size: 140px 140px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  mix-blend-mode: screen;
+  z-index: 5;
+}
+
+.blueprint-overlay.visible {
+  opacity: 0.4;
+}
+
+.tilt-card {
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg) translateZ(0);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tilt-card:hover {
+  box-shadow: 0 28px 55px rgba(0, 240, 255, 0.18);
+}
+
+.hide-cursor {
+  cursor: none;
+}
+
+.cursor-spotlight {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.95) 0%, rgba(0, 240, 255, 0.4) 60%, transparent 70%);
+  mix-blend-mode: screen;
+  z-index: 50;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.cursor-spotlight.link {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.9) 0%, rgba(0, 240, 255, 0.28) 65%, transparent 72%);
+}
+
+.cursor-spotlight.project {
+  width: 36px;
+  height: 36px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.95) 0%, rgba(255, 107, 53, 0.35) 60%, transparent 75%);
+}
+
+.cursor-trail {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 240, 255, 0.45);
+  filter: blur(4px);
+  z-index: 40;
+  transform: translate3d(-50%, -50%, 0);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cursor-trail.link {
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 240, 255, 0.32);
+}
+
+.cursor-trail.project {
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 107, 53, 0.32);
+}
+
+.cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 240, 255, 0.45);
+  border-radius: 999px;
+  z-index: 45;
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 0;
+}
+
+.cursor-ring.animate {
+  animation: cursor-ring 0.6s ease-out;
+}
+
+.cursor-ring.project {
+  border-color: rgba(255, 107, 53, 0.4);
+}
+
+.magnetic {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.magnetic.is-active {
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
+}
+
+.parallax {
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(168, 85, 247, 0.3));
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-thumbnail {
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.project-thumbnail img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-thumbnail img {
+  transform: scale(1.08);
+}
+
+.tag-chip {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tag-chip:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 12px 24px rgba(0, 240, 255, 0.22);
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(0, 240, 255, 0.65), rgba(168, 85, 247, 0.65), transparent);
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.timeline-line.visible {
+  opacity: 1;
+  animation: draw-line 1.2s ease forwards;
+}
+
+.timeline-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.8), rgba(168, 85, 247, 0.8));
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.45);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+canvas.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-heading {
+  font-family: 'Chakra Petch', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.9), rgba(168, 85, 247, 0.9));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #00f0ff 0%, #a855f7 65%, #00f0ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient-x 12s ease infinite;
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid rgba(0, 240, 255, 0.6);
+  white-space: nowrap;
+  animation: typing 3s steps(30, end), blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(0, 240, 255, 0.8);
+  }
+}

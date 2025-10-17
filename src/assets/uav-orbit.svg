@@ -1,0 +1,47 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="120" y1="40" x2="860" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00F0FF" />
+      <stop offset="0.5" stop-color="#47A1F8" />
+      <stop offset="1" stop-color="#A855F7" />
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(480 320) scale(420 260)">
+      <stop offset="0" stop-color="rgba(0, 240, 255, 0.4)" />
+      <stop offset="1" stop-color="rgba(10, 14, 39, 0)" />
+    </radialGradient>
+  </defs>
+  <rect width="960" height="640" rx="32" fill="#0b1030" />
+  <rect width="960" height="640" rx="32" fill="url(#halo)" />
+  <g opacity="0.25">
+    <path d="M120 320C220 180 740 180 840 320" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round" />
+    <path d="M180 320C260 220 700 220 780 320" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round" />
+    <path d="M240 320C300 260 640 260 720 320" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round" />
+  </g>
+  <g filter="url(#glow)">
+    <path d="M320 320C360 260 600 260 640 320" stroke="url(#grad1)" stroke-width="6" stroke-linecap="round" opacity="0.6" />
+  </g>
+  <g transform="translate(480 260) rotate(-8)">
+    <path d="M-110 18Q-96 2 -70 0Q-6 -6 56 -8Q108 -9 150 -4Q180 0 190 16Q198 30 186 44Q172 60 140 60Q60 60 -40 58Q-80 58 -102 46Q-120 36 -110 18Z" fill="rgba(0, 240, 255, 0.18)" />
+  </g>
+  <g transform="translate(520 270) rotate(-12)">
+    <path d="M-80 0C-40 -36 40 -36 80 0C40 36 -40 36 -80 0Z" fill="rgba(0, 240, 255, 0.2)" />
+  </g>
+  <g transform="translate(560 285) rotate(8)">
+    <path d="M0 -36C20 -54 56 -54 76 -18C88 4 64 40 30 52C14 58 -6 60 -24 58C-48 52 -62 38 -58 20C-52 -4 -28 -22 0 -36Z" fill="url(#grad1)" />
+    <path d="M-20 -10L-50 -56L-12 -44L8 -60L14 -24L46 -2L2 -6L-20 -10Z" fill="#ffffff" opacity="0.85" />
+    <circle cx="-36" cy="-38" r="6" fill="#00F0FF" />
+    <circle cx="26" cy="8" r="8" fill="#A855F7" opacity="0.6" />
+    <path d="M-60 28C-20 18 32 16 72 32" stroke="#00F0FF" stroke-width="4" stroke-linecap="round" opacity="0.35" />
+  </g>
+  <g opacity="0.4" stroke="#00F0FF" stroke-width="1">
+    <circle cx="140" cy="120" r="8" />
+    <circle cx="780" cy="520" r="6" />
+    <circle cx="860" cy="180" r="10" />
+    <circle cx="220" cy="500" r="5" />
+  </g>
+  <defs>
+    <filter id="glow" x="180" y="230" width="600" height="180" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="20" />
+    </filter>
+  </defs>
+</svg>

@@ -1,0 +1,44 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="swirl" x1="120" y1="40" x2="840" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00F0FF"/>
+      <stop offset="0.5" stop-color="#5FB2FF"/>
+      <stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(480 320) scale(360 280)">
+      <stop offset="0" stop-color="rgba(0, 240, 255, 0.35)"/>
+      <stop offset="1" stop-color="rgba(10, 14, 39, 0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="640" rx="32" fill="#080c26"/>
+  <rect width="960" height="640" rx="32" fill="url(#glow)"/>
+  <g opacity="0.45" stroke="url(#swirl)" stroke-width="1.4">
+    <circle cx="480" cy="320" r="260"/>
+    <circle cx="480" cy="320" r="210"/>
+    <circle cx="480" cy="320" r="160"/>
+    <circle cx="480" cy="320" r="110"/>
+  </g>
+  <g stroke="url(#swirl)" stroke-width="3" opacity="0.8">
+    <path d="M476 128C620 140 752 230 804 362" stroke-linecap="round"/>
+    <path d="M480 168C602 190 720 280 744 404" stroke-linecap="round"/>
+    <path d="M480 202C584 232 668 306 684 400" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(480 320)">
+    <g opacity="0.75">
+      <path d="M0 -70C38 -66 66 -38 70 0C66 38 38 66 0 70C-38 66 -66 38 -70 0C-66 -38 -38 -66 0 -70Z" fill="rgba(0, 240, 255, 0.22)"/>
+      <path d="M0 -46C24 -44 44 -24 46 0C44 24 24 44 0 46C-24 44 -44 24 -46 0C-44 -24 -24 -44 0 -46Z" fill="rgba(0, 240, 255, 0.34)"/>
+    </g>
+    <circle cx="0" cy="0" r="26" fill="#1B214A" stroke="url(#swirl)" stroke-width="4"/>
+    <path d="M-12 -6L18 0L-12 6Z" fill="#00F0FF"/>
+  </g>
+  <g opacity="0.28">
+    <path d="M140 340C240 180 700 160 830 290" stroke="#00F0FF" stroke-width="1.2" stroke-dasharray="12 14"/>
+    <path d="M820 420C680 540 220 520 150 380" stroke="#A855F7" stroke-width="1.2" stroke-dasharray="16 12"/>
+  </g>
+  <g fill="#00F0FF" opacity="0.6">
+    <circle cx="210" cy="160" r="6"/>
+    <circle cx="820" cy="220" r="8"/>
+    <circle cx="760" cy="480" r="5"/>
+    <circle cx="180" cy="480" r="4"/>
+  </g>
+</svg>
