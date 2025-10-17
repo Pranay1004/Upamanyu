@@ -89,7 +89,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {filteredProjects.map((project, i) => (
             <div
               key={project.title}
@@ -98,9 +98,9 @@ export default function Projects() {
               }`}
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <div className="project-thumbnail mb-6 h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-accent-cyan/10 to-accent-purple/10 flex items-center justify-center">
+              <div className="project-thumbnail mb-6 h-64 rounded-2xl overflow-hidden bg-gradient-to-br from-accent-cyan/10 to-accent-purple/10 flex items-center justify-center p-4">
                 <img
-                  src={`/src/assets/${project.thumbnail}`}
+                  src={`/projects/${project.thumbnail}`}
                   alt={project.title}
                   className="w-full h-full object-contain"
                 />

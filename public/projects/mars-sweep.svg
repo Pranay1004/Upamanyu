@@ -1,0 +1,38 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="marsGrad" x1="80" y1="120" x2="880" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF6B35"/>
+      <stop offset="0.5" stop-color="#ED4C94"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <radialGradient id="atmo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(480 320) scale(460 320)">
+      <stop offset="0" stop-color="rgba(255, 107, 53, 0.28)"/>
+      <stop offset="1" stop-color="rgba(10, 14, 39, 0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="640" rx="32" fill="#0a0e27"/>
+  <rect width="960" height="640" rx="32" fill="url(#atmo)"/>
+  <circle cx="740" cy="180" r="120" fill="rgba(255, 107, 53, 0.25)"/>
+  <circle cx="220" cy="140" r="68" fill="rgba(0, 240, 255, 0.18)"/>
+  <g opacity="0.4" stroke="url(#marsGrad)" stroke-width="2" stroke-linecap="round">
+    <path d="M100 440C180 380 260 360 340 360C420 360 520 400 600 400C700 400 780 360 860 320"/>
+    <path d="M100 480C200 420 280 420 360 420C440 420 520 460 620 460C720 460 820 420 880 380"/>
+  </g>
+  <g transform="translate(480 320) rotate(-14)">
+    <path d="M-220 120C-180 20 -60 -40 100 -40C200 -40 300 20 320 80C332 116 300 146 260 156C220 166 140 150 60 150C-40 150 -160 180 -220 120Z" fill="rgba(0, 240, 255, 0.18)"/>
+  </g>
+  <g transform="translate(460 300) rotate(-10)">
+    <path d="M-160 0C-100 -40 40 -70 168 -30C236 -8 260 30 256 62C252 94 200 120 112 128C-30 140 -220 80 -160 0Z" fill="rgba(0, 240, 255, 0.22)"/>
+  </g>
+  <g transform="translate(520 280) rotate(-5)">
+    <path d="M-40 -36C-24 -56 16 -60 42 -50C76 -36 110 -4 104 24C100 44 66 60 28 64C-10 68 -56 52 -64 16C-68 -4 -58 -20 -40 -36Z" fill="url(#marsGrad)"/>
+    <path d="M-60 -10L-12 -56L32 -46L58 -16L26 2L-60 -10Z" fill="#fff" opacity="0.82"/>
+    <path d="M-58 20C-10 8 56 10 96 40" stroke="#FF6B35" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+    <circle cx="-22" cy="-32" r="6" fill="#00F0FF"/>
+    <circle cx="48" cy="6" r="7" fill="#FF6B35"/>
+  </g>
+  <g opacity="0.35" stroke="#00F0FF" stroke-dasharray="12 12" stroke-width="1.5">
+    <path d="M140 120C360 80 640 80 820 180"/>
+    <path d="M160 200C380 160 620 160 820 260"/>
+  </g>
+</svg>
