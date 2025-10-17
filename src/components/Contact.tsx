@@ -1,41 +1,8 @@
-import { useState, type FormEvent } from 'react'
+import { useForm, ValidationError } from '@formspree/react'
 import { Mail, Linkedin, Github, Send, Rocket } from 'lucide-react'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
-  const [launching, setLaunching] = useState(false)
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    setLaunching(true)
-
-    try {
-      // Using Formspree - replace YOUR_FORM_ID with your actual Formspree form ID
-      // Get free form at: https://formspree.io/
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (response.ok) {
-        setSubmitted(true)
-        setFormData({ name: '', email: '', message: '' })
-        setTimeout(() => setSubmitted(false), 4000)
-      } else {
-        alert('Failed to send message. Please try emailing directly.')
-      }
-    } catch (error) {
-      console.error('Form submission error:', error)
-      // Fallback: open email client
-      window.location.href = `mailto:upamanyukalburgi@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${formData.message}`
-    } finally {
-      setLaunching(false)
-    }
-  }
+  const [state, handleSubmit] = useForm('xgvndlbk')
 
   return (
     <section
@@ -57,52 +24,64 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="relative">
                 <input
+                  id="name"
                   type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  name="name"
                   required
                   className="w-full px-6 py-4 glass-panel rounded-xl text-white placeholder-transparent peer focus:border-accent-cyan border-2 border-transparent transition-all duration-300 outline-none"
                   placeholder="Your Name"
                 />
-                <label className="absolute left-6 -top-6 text-sm text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent-cyan transition-all duration-300">
+                <label
+                  htmlFor="name"
+                  className="absolute left-6 -top-6 text-sm text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent-cyan transition-all duration-300"
+                >
                   Your Name
                 </label>
+                <ValidationError prefix="Name" field="name" errors={state.errors} />
               </div>
 
               <div className="relative">
                 <input
+                  id="email"
                   type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  name="email"
                   required
                   className="w-full px-6 py-4 glass-panel rounded-xl text-white placeholder-transparent peer focus:border-accent-cyan border-2 border-transparent transition-all duration-300 outline-none"
                   placeholder="Your Email"
                 />
-                <label className="absolute left-6 -top-6 text-sm text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent-cyan transition-all duration-300">
+                <label
+                  htmlFor="email"
+                  className="absolute left-6 -top-6 text-sm text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent-cyan transition-all duration-300"
+                >
                   Your Email
                 </label>
+                <ValidationError prefix="Email" field="email" errors={state.errors} />
               </div>
 
               <div className="relative">
                 <textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  id="message"
+                  name="message"
                   required
                   rows={5}
                   className="w-full px-6 py-4 glass-panel rounded-xl text-white placeholder-transparent peer focus:border-accent-cyan border-2 border-transparent transition-all duration-300 outline-none resize-none"
                   placeholder="Your Message"
                 />
-                <label className="absolute left-6 -top-6 text-sm text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent-cyan transition-all duration-300">
+                <label
+                  htmlFor="message"
+                  className="absolute left-6 -top-6 text-sm text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent-cyan transition-all duration-300"
+                >
                   Your Message
                 </label>
+                <ValidationError prefix="Message" field="message" errors={state.errors} />
               </div>
 
               <button
                 type="submit"
-                disabled={launching}
+                disabled={state.submitting}
                 className="w-full px-8 py-4 bg-accent-gradient rounded-full font-semibold text-white shadow-glow hover:shadow-glow-orange hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
               >
-                {launching ? (
+                {state.submitting ? (
                   <>
                     <Rocket className="animate-bounce" size={20} />
                     Launching...
@@ -115,7 +94,7 @@ export default function Contact() {
                 )}
               </button>
 
-              {submitted && (
+              {state.succeeded && (
                 <div className="text-center text-accent-cyan font-medium animate-fade-up">
                   ✓ Message sent successfully! I'll get back to you soon.
                 </div>
