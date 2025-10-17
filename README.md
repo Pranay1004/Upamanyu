@@ -1,4 +1,4 @@
-# Aerospace Portfolio - Upamanyu Kalburgi
+# 🚀 Upamanyu :-)
 
 A stunning, futuristic portfolio website showcasing aerospace engineering projects with smooth animations and interactive elements.
 
